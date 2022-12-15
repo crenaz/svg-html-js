@@ -1,5 +1,5 @@
-This is from a fireship tutorial, I'll use other pages for working with the fetch() api. 
-.
+This is from a fireShip svg tutorial, I'll use other pages for working through codingTrain's fetch() api tutorial  
+
 
 *original README below*
 

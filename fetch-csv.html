@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Coding Train: Data and APIs Project 1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js"></script>
+  </head>
+  <body>
+    Open the JavaScript Console to see the output.
+    <canvas id="chart" width="400" height="400"></canvas>
+    <script>
+      // Data from: https://data.giss.nasa.gov/gistemp/
+      // Mean from: https://earthobservatory.nasa.gov/world-of-change/DecadalTemp
+
+      getData();
+
+      async function getData () {
+        const response = await fetch('ZonAnn.Ts+dSST.csv');
+        const data = await response.text();
+
+        const table = data.split('\n').slice(1);
+        table.forEach(row => {
+            const columns = row.split(',');
+            const year = columns[0];
+            const temp = columns[1];
+            console.log(year, temp);
+        }); 
+      }
+      
+
+    </script>
+  </body>
+</html>
