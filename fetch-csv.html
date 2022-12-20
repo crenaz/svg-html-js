@@ -5,18 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Coding Train: Data and APIs Project 1</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     Open the JavaScript Console to see the output.
-    <canvas id="chart" width="400" height="400"></canvas>
+    <canvas id="chart" width="400" height="200"></canvas>
     <script>
       // Data from: https://data.giss.nasa.gov/gistemp/
       // Mean from: https://earthobservatory.nasa.gov/world-of-change/DecadalTemp
 
-      getData();
+      chartIt();
+        async function chartIt() {
+            const data  = await getData();
+            const ctx = document.getElementById('chart');
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.xs,
+                    datasets: [
+                        {
+                            label: 'Combined Land-Surface Air and Sea-Surface Water Temperature in C°',
+                            data: data.ys,
+                            fill: true,
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                scales: {
+                    y: {
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return value + '°';
+                            }
+                        },
+                        beginAtZero: false
+                        }
+                      }
+                   }
+               }
+           );
+       }
 
-      async function getData () {
+       async function getData () {
+        const xs = [];
+        const ys = [];
         const response = await fetch('ZonAnn.Ts+dSST.csv');
         const data = await response.text();
 
@@ -24,9 +57,12 @@
         table.forEach(row => {
             const columns = row.split(',');
             const year = columns[0];
+            xs.push(year);
             const temp = columns[1];
+            ys.push(parseFloat(temp) + 14);
             console.log(year, temp);
         }); 
+        return { xs, ys};
       }
       
 
