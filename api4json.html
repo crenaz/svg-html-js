@@ -5,13 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Fetch JSON from API and map lat lon</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+      
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+    <style>
+        #issMap {
+            height: 180px;
+        }    
+    </style>
+
 </head>
 <body>
     <h1>Where is the ISS?</h1>
 
-    <p>latitude: <span id="lat"></span><br />
-        longitude: <span id="lon"></span></p>
+    <p>
+        latitude: <span id="lat"></span><br />
+        longitude: <span id="lon"></span>
+    </p>
+    <div id="issMap"></div>
+
     <script>
+        const map = L.map('issMap').setView([51.505, -0.09], 13);
+
+        const attribution =
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+        
+        const tileURL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const tiles = L.tileLayer(___, ___);
+
         const api_url = 'https://api.wheretheiss.at/v1/satellites/25544';
             
         async function getISS() {
@@ -25,7 +52,7 @@
             console.log(longitude);
         }
         
-        getISS()
+        getISS();
     </script>
 </body>
 </html>
