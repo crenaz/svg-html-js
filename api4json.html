@@ -25,8 +25,8 @@
     <h1>Where is the ISS?</h1>
 
     <p>
-        latitude: <span id="lat"></span><br />
-        longitude: <span id="lon"></span>
+        latitude: <span id="lat"></span>°<br />
+        longitude: <span id="lon"></span>°
     </p>
     <div id="issMap"></div>
 
@@ -51,6 +51,8 @@
         const marker = L.marker([0, 0], {icon : issIcon }).addTo(myMap);
 
         const api_url = 'https://api.wheretheiss.at/v1/satellites/25544';
+
+        let firstTime = true;
             
         async function getISS() {
             const response = await fetch(api_url);
@@ -58,15 +60,20 @@
             const { latitude, longitude } = data;
 
             marker.setLatLng([latitude, longitude]);
-            myMap.setView([latitude, longitude], 2);
+            if (firstTime) {
+                myMap.setView([latitude, longitude], 2);
+                firstTime = false; 
+            }
 
-            document.getElementById('lat').textContent = latitude;
-            document.getElementById('lon').textContent = longitude; 
+            document.getElementById('lat').textContent = latitude.toFixed(3);
+            document.getElementById('lon').textContent = longitude.toFixed(3); 
             console.log(latitude);
             console.log(longitude);
         }
         
         getISS();
+
+        setInterval(getISS, 1000);
     </script>
 </body>
 </html>
