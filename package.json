@@ -1,0 +1,22 @@
+{
+  "name": "svg-html-js",
+  "version": "1.0.0",
+  "description": "Just a node test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crenaz/svg-html-js.git"
+  },
+  "author": "crenaz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crenaz/svg-html-js/issues"
+  },
+  "homepage": "https://github.com/crenaz/svg-html-js#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
