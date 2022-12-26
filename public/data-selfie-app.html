@@ -19,9 +19,9 @@
 
             const data = { lat , lon };
             const options = {
-
-            }
-            fetch('/api', options)
+              method: 'POST'
+            };
+            fetch('/api', options);
         });
         } else {
           console.log('geolocation IS NOT available');
