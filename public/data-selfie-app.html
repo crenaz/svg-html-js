@@ -10,7 +10,7 @@
     <script>
         if ('geolocation' in navigator) {
           console.log('geolocation is available');
-          navigator.geolocation.getCurrentPosition( (position) => {
+          navigator.geolocation.getCurrentPosition( async position => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             document.getElementById('latitude').textContent = lat;
@@ -19,10 +19,16 @@
 
             const data = { lat , lon };
             const options = {
-              method: 'POST'
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
             };
-            fetch('/api', options);
-        });
+            const response = await fetch('/api', options);
+            const json = await response.json();
+            console.log(json);
+          });
         } else {
           console.log('geolocation IS NOT available');
         }
@@ -32,5 +38,22 @@
         Latitude: <span id="latitude"></span>&deg;<br />
         Longitude: <span id="longitude"></span>&deg;
       </p>
+      <button id="geolocate">geolocate</button>
+      <script>
+        document.getElementById('geolocate').addEventListener('click', event => {
+          if ('geolocation' in navigator) {
+            console.log('geolocation available');
+            navigator.geolocation.getCurrentPosition(position => {
+              lat = position.coords.latitude;
+              lon = position.coords.longitude;
+              console.log(lat, lon);
+              document.getElementById('latitude').textContent = lat;
+              document.getElementById('longitude').textContent = lon;
+            });
+          } else {
+            console.log('geolocation not available');
+          }
+        });
+      </script>
 </body>
 </html>
