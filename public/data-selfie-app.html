@@ -5,8 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      * {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: ubuntu;
+}
+.wrapper {
+	z-index: 1;
+	background: linear-gradient(-45deg, red, green, blue, yellow);
+	background-size: 400% 400%;
+	width: 100%;
+	height: 100vh;
+	animation: animate 15s ease infinite;
+}
+.wrapper ul {
+	height: 50px;
+	display: flex;
+	justify-content: center;
+}
+.wrapper ul li {
+	display: inline-block;
+	padding: 40px 15px;
+}
+.wrapper ul li a {
+	text-decoration: none;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 20px;
+	padding: 5px 10px;
+}
+.wrapper ul li a:hover {
+	background: #fff;
+	color: #000;
+}
+.wrapper h2 {
+	text-align: center;
+	color: #fff;
+	font-size: 60px;
+	margin-top: 15%;
+	margin-bottom: 20px;
+}
+.wrapper p {
+	text-align: center;
+	font-size: 18px;
+	width: 35%;
+	margin: auto;
+	color: #ddd;
+	line-height: 1.7;
+}
+@keyframes animate {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+    </style>
 </head>
 <body>
+  <div class="wrapper">
       <h1>Data Selfie App</h1>
       <p>
         Latitude: <span id="latitude"></span>&deg;<br />
@@ -53,5 +118,6 @@
         console.log("geolocation not available");
       }
     </script>
+  </div>
 </body>
 </html>
