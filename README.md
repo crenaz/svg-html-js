@@ -8,7 +8,7 @@ https://www.youtube.com/watch?v=q-lUgFxwjEM
 Intro-to-Data-APIs-JS/index.html at source · CodingTrain/Intro-to-Data-APIs-JS
 https://github.com/CodingTrain/Intro-to-Data-APIs-JS/blob/source/module2/exercise_06_input_box/public/index.html
 
-
+P.S. Start with nodemon
 
 
 *original README below*

@@ -68,6 +68,12 @@ body {
 	margin: 0 auto;
 	color: #ddd;
 }
+.form {
+    background: #aaa;
+    height: 3rem;
+    width: 13rem;
+    margin: 0 auto;
+}
 @keyframes animate {
 	0% {
 		background-position: 0% 50%;
@@ -89,8 +95,10 @@ body {
         Latitude: <span id="latitude"></span>&deg;<br />
         Longitude: <span id="longitude"></span>&deg;
       </p>
-      <label for="keyWord">enter your key word:</label><br />
-      <input id="keyWord" value="key word" />
+      <div class="form">
+        <label for="keyWord">enter your key word:</label><br />
+        <input id="keyWord" value="key word" />
+      </div>
       <br />
       <p>
         <button id="submit">submit</button>
@@ -116,6 +124,7 @@ body {
         const response = await fetch("/api", options);
         const json = await response.json();
         console.log(json);
+
       });
 
       if ("geolocation" in navigator) {
