@@ -7,64 +7,79 @@
     <title>Document</title>
     <style>
       * {
-	margin: 0;
-	padding: 0;
-}
-body {
-	font-family: ubuntu;
-}
-.wrapper {
-	z-index: 1;
-	background: linear-gradient(-45deg, red, green, blue, yellow);
-	background-size: 300% 300%;
-	width: 100%;
-	height: 100vh;
-	animation: animate 15s ease infinite;
-}
-.wrapper h1 {
-  text-align: center;
-	color: #fff;
-	margin-bottom: 20px;
-}
-.wrapper h2 {
-	text-align: center;
-	color: #fff;
-	font-size: 60px;
-	margin-top: 15%;
-	margin-bottom: 20px;
-}
-.wrapper p {
-	text-align: center;
-	font-size: 18px;
-	width: 35%;
-	margin: auto;
-	color: #ddd;
-	line-height: 1.7;
-}
-.wrapper label {
-  text-align: center;
-	font-size: 18px;
-	width: 35%;
-	margin: 0 auto;
-	color: #ddd;
-}
-.form {
-    background: #aaa;
-    height: 3rem;
-    width: 13rem;
-    margin: 0 auto;
-}
-@keyframes animate {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
+        margin: 0;
+        padding: 0;
+        }
+        body {
+          font-family: ubuntu;
+        }
+        .wrapper {
+          z-index: 1;
+          background: linear-gradient(-45deg, red, green, blue, yellow);
+          background-size: 300% 300%;
+          width: 100%;
+          height: 100vh;
+          animation: animate 15s ease infinite;
+        }
+        .wrapper h1 {
+          text-align: center;
+          color: #fff;
+          margin-bottom: 20px;
+        }
+        .wrapper h2 {
+          text-align: center;
+          color: #fff;
+          font-size: 60px;
+          margin-top: 15%;
+          margin-bottom: 20px;
+        }
+        .wrapper p {
+          text-align: center;
+          font-size: 18px;
+          width: 35%;
+          margin: auto;
+          color: #ddd;
+          line-height: 1.7;
+        }
+        .wrapper label {
+          text-align: center;
+          font-size: 18px;
+          width: 35%;
+          margin: 0 auto;
+          color: rgb(41, 41, 41);
+        }
+        .form {
+            background: #aaa;
+            color:#000;
+            width: 13rem;
+            margin: 0 auto;
+            padding: 0.5rem;
+        }
+        input {
+          padding-bottom: 0.1rem;
+          padding-left: 0.3rem;
+          margin: 0.3rem 0;
+        }
+        #submit {
+          margin-bottom: 0.4rem;
+        }
+        .divo {
+          text-align: center;
+          color: rgb(255, 2, 2);
+          font-size: 1rem;
+        }
+
+        @keyframes animate {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
 
     </style>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
@@ -79,16 +94,14 @@ body {
       <div class="form">
         <label for="keyWord">enter your key word:</label><br />
         <input id="keyWord" value="key word" />
+        <button id="submit">submit</button>
       </div>
       <br />
-      <p>
-        <button id="submit">submit</button>
-      </p>
       <div id="results"></div>
       <p>
         To Do:<br />
         Display results in a little box <br />
-        Make button to display GET requests from db
+        This next button will display GET requests from db
       </p>
       <p>
         <button id="showData">Show Data</button>
@@ -120,13 +133,23 @@ body {
         const response = await fetch('/api');
         const data = await response.json();
 
-        for (item of data ) {
+        for (const item of data ) {
           const root = document.createElement('div');
           const storedWord = document.createElement('div');
           const geo = document.createElement('div');
           const date = document.createElement('div');
+
+          root.className = 'divo';
           
-          storedWord.textContent = `word: ${item.keyword}`;
+          try {
+            if (typeof item.keyWord !== 'undefined') {
+              storedWord.textContent = `word: ${item.keyWord}`;
+            } else {
+              throw new Error(`${item.keyWord} does not exist`);
+            }
+          } catch (error) {
+            console.error(error);
+          }
           geo.textContent = `${item.lat}°, ${item.lon}°`;
           const dateString = new Date(item.timestamp).toLocaleString();
           date.textContent = dateString;
