@@ -18,6 +18,12 @@
         async function chartIt() {
             const data  = await getData();
             const ctx = document.getElementById('chart');
+
+            // Gradient Fill
+            // let gradient = await ctx.createLinearGradient(0, 0, 0, 400);
+            // gradient.addColorStop(0, 'rgba(58, 123, 213, 1)');
+            // gradient.addColorStop(1, 'rgba( 0, 210, 255, 0.3)');
+
             const myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -27,7 +33,8 @@
                             label: 'Combined Land-Surface Air and Sea-Surface Water Temperature in C°',
                             data: data.ys,
                             fill: true,
-                            borderWidth: 1
+                            borderWidth: 1,
+                            // backgroundColor: gradient
                         }
                     ]
                 },
