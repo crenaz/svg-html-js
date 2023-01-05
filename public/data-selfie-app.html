@@ -16,30 +16,10 @@ body {
 .wrapper {
 	z-index: 1;
 	background: linear-gradient(-45deg, red, green, blue, yellow);
-	background-size: 400% 400%;
+	background-size: 300% 300%;
 	width: 100%;
 	height: 100vh;
 	animation: animate 15s ease infinite;
-}
-.wrapper ul {
-	height: 50px;
-	display: flex;
-	justify-content: center;
-}
-.wrapper ul li {
-	display: inline-block;
-	padding: 40px 15px;
-}
-.wrapper ul li a {
-	text-decoration: none;
-	color: #fff;
-	text-transform: uppercase;
-	font-size: 20px;
-	padding: 5px 10px;
-}
-.wrapper ul li a:hover {
-	background: #fff;
-	color: #000;
 }
 .wrapper h1 {
   text-align: center;
@@ -87,6 +67,7 @@ body {
 }
 
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
 </head>
 <body>
   <div class="wrapper">
@@ -106,7 +87,11 @@ body {
       <div id="results"></div>
       <p>
         To Do:<br />
+        Display results in a little box <br />
         Make button to display GET requests from db
+      </p>
+      <p>
+        <button id="showData">Show Data</button>
       </p>
     <script>
       let lat, lon;
@@ -124,8 +109,36 @@ body {
         const response = await fetch("/api", options);
         const json = await response.json();
         console.log(json);
-
       });
+
+      const showButton = document.getElementById("showData");
+      showButton.addEventListener("click", async () => {
+        getData();
+      });
+
+      async function getData() {
+        const response = await fetch('/api');
+        const data = await response.json();
+
+        for (item of data ) {
+          const root = document.createElement('div');
+          const storedWord = document.createElement('div');
+          const geo = document.createElement('div');
+          const date = document.createElement('div');
+          
+          storedWord.textContent = `word: ${item.keyword}`;
+          geo.textContent = `${item.lat}°, ${item.lon}°`;
+          const dateString = new Date(item.timestamp).toLocaleString();
+          date.textContent = dateString;
+
+          root.append(storedWord, geo, date);
+          document.querySelector('.wrapper').append(root);
+          //document.body.append(root);
+        }
+
+
+        console.log(data);
+      }
 
       if ("geolocation" in navigator) {
         console.log("geolocation available");
