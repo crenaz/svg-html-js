@@ -130,10 +130,22 @@
       });
 
       async function getData() {
-        const response = await fetch('/api');
-        const data = await response.json();
+        try {
+          const response = await fetch('/api');
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          displayData(data);
+        } catch (error) {
+          console.error('Failed to fetch data:', error);
+          document.getElementById('results').innerHTML = 
+            `<div class="error">Failed to load data: ${error.message}</div>`;
+        }
+      }
 
-        for (const item of data ) {
+      function displayData(data) {
+        data.forEach(item => {
           const root = document.createElement('div');
           const storedWord = document.createElement('div');
           const geo = document.createElement('div');
@@ -157,10 +169,7 @@
           root.append(storedWord, geo, date);
           document.querySelector('.wrapper').append(root);
           //document.body.append(root);
-        }
-
-
-        console.log(data);
+        });
       }
 
       if ("geolocation" in navigator) {
