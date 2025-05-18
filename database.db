@@ -1,5 +1,6 @@
 {"lat":40.6585344,"lon":-73.924608,"keyWord":"palabra","timestamp":1672889393995,"_id":"2P6gNheNdTx4Ylfr"}
 {"lat":40.6585344,"lon":-73.924608,"keyWord":"test","timestamp":1672895566833,"_id":"6ZTjak6fgxvr9zry"}
+{"lat":40.6639229,"lon":-73.9322521,"keyWord":"thursday","timestamp":1747350662518,"_id":"ArOAHKP4X0fh4aQu"}
 {"lat":40.6585344,"lon":-73.924608,"keyWord":"key word","timestamp":1672903695187,"_id":"CFS91FvGIEL8EQSf"}
 {"lat":40.6585344,"lon":-73.924608,"keyWord":"palabra","timestamp":1672889488515,"_id":"EXO90du2qIqG1AbJ"}
 {"lat":40.6639365,"lon":-73.932274,"timestamp":1672100121984,"_id":"EoVCsmnYSf9aoVqA"}
@@ -11,8 +12,7 @@
 {"lat":40.6638866,"lon":-73.932237,"keyWord":"foo","timestamp":1672102450180,"_id":"hiMcMrZG7FCd4qcE"}
 {"lat":40.6638875,"lon":-73.9322633,"keyWord":"key word","timestamp":1672903123839,"_id":"ib2Y2okwtlzuckwx"}
 {"lat":40.6638866,"lon":-73.932237,"keyWord":"bar","timestamp":1672102459742,"_id":"irojXFFIYXRATS0C"}
-{"lat":40.663881,"lon":-73.9322382,"timestamp":1672100046624,"_id":"j84vQgeOnpHccXOd"}
-{"lat":40.6781952,"lon":-73.9278848,"timestamp":1672101602328,"_id":"tD7mT6itkf5RO0VK"}
-{"lat":40.6639229,"lon":-73.9322521,"keyWord":"thursday","timestamp":1747350661882,"_id":"mf1UlqOb7x3pzdc9"}
-{"lat":40.6639229,"lon":-73.9322521,"keyWord":"thursday","timestamp":1747350662518,"_id":"ArOAHKP4X0fh4aQu"}
 {"lat":40.6639229,"lon":-73.9322521,"keyWord":"thursday","timestamp":1747350663981,"_id":"j5Q7WG22S7iWbFWo"}
+{"lat":40.663881,"lon":-73.9322382,"timestamp":1672100046624,"_id":"j84vQgeOnpHccXOd"}
+{"lat":40.6639229,"lon":-73.9322521,"keyWord":"thursday","timestamp":1747350661882,"_id":"mf1UlqOb7x3pzdc9"}
+{"lat":40.6781952,"lon":-73.9278848,"timestamp":1672101602328,"_id":"tD7mT6itkf5RO0VK"}

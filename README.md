@@ -22,7 +22,6 @@ Watch the full [Wavy Blobby Backgrounds with CSS and SVG Tutorial](https://youtu
 ## Run it
 
 ```
-git clone <this-repo>
-npx serve
+npm start
 ```
 
